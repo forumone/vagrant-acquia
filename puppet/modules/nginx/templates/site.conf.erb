@@ -1,0 +1,45 @@
+include "conf.d/<%= name %>.*.before.conf";
+
+<% if @redirect_from_aliases -%>
+  server {
+    server_name <%= redirect_from_aliases %>;
+    return 301 $scheme://<%= server_name_0 %>$request_uri;
+  }
+<% end -%>
+server {
+<% if is_default -%>
+  listen        80 default;
+<% end -%>
+  server_name   <%= server_name %>;
+  root          <%= root %>;
+  index         <%= index %>;
+  try_files     <%= try_files %>;
+  access_log    /var/log/nginx/<%= logs_prefix %>access.log;
+  error_log     /var/log/nginx/<%= logs_prefix %>error.log;
+
+<% if @client_max_body_size -%>
+  client_max_body_size <%= client_max_body_size %>;
+<% end -%>
+
+  include "conf.d/<%= name %>.*.inside.conf";
+
+  location = /favicon.ico {
+    log_not_found off;
+    access_log off;
+  }
+
+  location = /robots.txt {
+    allow all;
+    log_not_found off;
+    access_log off;
+  }
+
+  location ~ /\. {
+    deny all;
+    access_log off;
+    log_not_found off;
+  }
+
+}
+
+include "conf.d/<%= name %>.*.after.conf";

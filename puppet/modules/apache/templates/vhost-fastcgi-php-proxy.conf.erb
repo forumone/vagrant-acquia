@@ -1,0 +1,49 @@
+<VirtualHost <%= vhost_name %>:<%= port %>>
+	ServerName <%= srvname %>
+<% if serveraliases.is_a? Array -%>
+<% serveraliases.each do |name| -%><%= "	ServerAlias #{name}\n" %><% end -%>
+<% elsif serveraliases != '' -%>
+<%= "	ServerAlias #{serveraliases}" -%>
+<% end -%>
+<% if !ssl_cert.empty? -%>
+
+	SSLEngine On
+	SSLCertificateFile      <%= ssl_cert %>
+	SSLCertificateKeyFile   <%= ssl_key %>
+	SSLCertificateChainFile <%= ssl_chain %>
+	SSLCACertificateFile    <%= ssl_ca %>
+<% end -%>
+
+	DocumentRoot <%= docroot %>
+	<Directory "<%= docroot %>">
+		Options <%= options %>
+		AllowOverride <%= allow_override %>
+		Order allow,deny
+		Allow from all
+	</Directory>
+
+	FastCgiExternalServer <%= fastcgi_dir %>/php.external -socket <%= socket %> -idle-timeout 900
+	Alias /fastcgi-bin <%= fastcgi_dir %>
+ 	<Location "/fastcgi-bin/php.external">
+		Order Deny,Allow
+		Deny from All
+		Allow from env=REDIRECT_STATUS
+	</Location>
+	AddHandler php-fastcgi .php
+	Action php-fastcgi /fastcgi-bin/php.external
+	
+	ProxyRequests Off
+	<Proxy *>
+		Order deny,allow
+		Allow from all
+	</Proxy>
+	ProxyPass         <%= proxy_path %> <%= proxy_dest %>
+	ProxyPassReverse  <%= proxy_path %> <%= proxy_dest %>
+	ProxyPreserveHost On 
+	
+	ErrorLog /var/log/<%= apache_name %>/<%= name %>_error.log
+	LogLevel warn
+	CustomLog /var/log/<%= apache_name %>/<%= name %>_access.log combined
+	ServerSignature Off
+	
+</VirtualHost>

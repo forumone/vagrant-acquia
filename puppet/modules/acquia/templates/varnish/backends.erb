@@ -1,0 +1,26 @@
+probe healthcheck {
+  .request =
+    #"GET /status.php HTTP/1.1"
+    "GET / HTTP/1.1"
+    "Host: localhost"
+    "Connection: close";
+  .interval = 5s;
+  .timeout = 15s;
+  .window = 5;
+  .threshold = 1;
+}
+
+backend web1 {
+  .host = "localhost";
+  .port = "8080";
+  .connect_timeout = 600s;
+  .first_byte_timeout = 600s;
+  .between_bytes_timeout = 600s;
+  .probe = healthcheck;
+}
+
+director default round-robin {
+  {
+    .backend = web1;
+  }
+}

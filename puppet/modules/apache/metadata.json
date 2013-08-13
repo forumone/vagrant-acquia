@@ -1,0 +1,50 @@
+{
+  "name": "soluvas-apache",
+  "author": "",
+  "description": "",
+  "license": "",
+  "project_page": "",
+  "source": "",
+  "summary": "",
+  "version": "0.0.3.1",
+  "checksums": {
+    "Modulefile": "a1e2ebc12e069f72d0f680f07960cba1",
+    "README.textile": "6c0aa3ccd7e68356b6cd70469f1977e2",
+    "files/httpd": "295f5e924afe6f752d29327e73fe6d0a",
+    "files/test.vhost": "0602022c19a7b6b289f218c7b93c1aea",
+    "manifests/dev.pp": "bc54a5af648cb04b7b3bb0e3f7be6543",
+    "manifests/init.pp": "668c5ac59c7c6ec975036cbe66f93c05",
+    "manifests/mod/python.pp": "f6314af3248dadc62f0bf73b606389df",
+    "manifests/mod/wsgi.pp": "e6447e4ee209cf967f09e6977dd83eaa",
+    "manifests/params.pp": "2b9b9c354849f9f6c8fe5d13fc8ed001",
+    "manifests/php.pp": "9396f36e3d1ed284f75f686532d4116b",
+    "manifests/python.pp": "1b36a39f7eee2749ed3c2dca46cd5de2",
+    "manifests/ssl.pp": "ed2b9c0c55ff1085ba5dfb3326c967e6",
+    "manifests/vhost.pp": "a28392160e188c681d09ce3b5f8b633b",
+    "manifests/vhost/dav.pp": "7a1ac01af02106777dceb8e26eb73cce",
+    "manifests/vhost/fastcgi_php.pp": "0bb3dc6c2a0dfecf2532758b84c8dc5f",
+    "manifests/vhost/fastcgi_php_proxy.pp": "a6b630980a017ae5296fdd563a09a2cf",
+    "manifests/vhost/proxy.pp": "a06f5185d2b277facb3c83503da9219e",
+    "manifests/vhost/redirect.pp": "457cf0b2611267695b182e3036b41423",
+    "templates/ssl-sni.conf.erb": "f754ef3d85ee2934c38b1493d2080c58",
+    "templates/vhost-dav.conf.erb": "b2c05a744f2391ba711124776a49ee20",
+    "templates/vhost-default.conf.erb": "6a118c71467d40bb6a9ff8e068992fc1",
+    "templates/vhost-fastcgi-php-proxy.conf.erb": "fe06d49f373eb4159f1e9691d457edf8",
+    "templates/vhost-fastcgi-php.conf.erb": "4c846cc50680dc56a0141613855d9916",
+    "templates/vhost-magento.conf.erb": "7e625adee35d2b4e5e1c7f4f7c0e284a",
+    "templates/vhost-proxy.conf.erb": "23e0aa8768a1ea5d111fd438cfd9ccd4",
+    "templates/vhost-redirect.conf.erb": "494ab6645fc6d9de52059c87586fb220",
+    "tests/apache.pp": "4eac4a7ef68499854c54a78879e25535",
+    "tests/dev.pp": "4cf15c1fecea3ca86009f182b402c7ab",
+    "tests/init.pp": "4eac4a7ef68499854c54a78879e25535",
+    "tests/php.pp": "ce7bb9eef69d32b42a32ce32d9653625",
+    "tests/ssl.pp": "191912535199531fd631f911c6329e56",
+    "tests/vhost.pp": "1b91e03c8ef89a7ecb6793831ac18399"
+  },
+  "dependencies": [
+    {
+      "name": "puppetlabs-firewall",
+      "versionRequirement": "\u003e\u003d0.0.1"
+    }
+  ]
+}

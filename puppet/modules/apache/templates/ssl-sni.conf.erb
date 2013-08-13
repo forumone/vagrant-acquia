@@ -1,0 +1,10 @@
+<IfModule mod_ssl.c>
+    # If you add NameVirtualHost *:443 here, you will also have to change
+    # the VirtualHost statement in /etc/apache2/sites-available/default-ssl
+    # to <VirtualHost *:443>
+    # Server Name Indication for SSL named virtual hosts is currently not
+    # supported by MSIE on Windows XP.
+    
+    # this enhances the base SSL config in /etc/apache2/ports.conf 
+    NameVirtualHost *:443
+</IfModule>

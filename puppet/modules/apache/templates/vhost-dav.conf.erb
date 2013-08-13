@@ -1,0 +1,36 @@
+<VirtualHost <%= vhost_name %>:<%= port %>>
+	ServerName  <%= srvname %>
+<% if serveraliases.is_a? Array -%>
+<% serveraliases.each do |name| -%>
+	ServerAlias <%= name %>
+<% end -%>
+<% elsif !serveraliases.empty? -%>
+	ServerAlias <%= serveraliases %>
+<% end -%>
+<% if !serveradmin.empty? -%>
+	ServerAdmin <%= serveradmin %>
+<% end -%>
+<% if !ssl_cert.empty? -%>
+
+	SSLEngine On
+	SSLCertificateFile      <%= ssl_cert %>
+	SSLCertificateKeyFile   <%= ssl_key %>
+	SSLCertificateChainFile <%= ssl_chain %>
+	SSLCACertificateFile    <%= ssl_ca %>
+<% end -%>
+
+	DocumentRoot <%= docroot %>
+	<Directory "<%= docroot %>">
+		Options <%= options %>
+		AllowOverride <%= allow_override %>
+		Order Deny,Allow
+		Deny from All
+		Allow from <%= allow_from %>
+		Dav On
+	</Directory>
+	
+	ErrorLog /var/log/<%= apache_name %>/<%= name %>_error.log
+	LogLevel warn
+	CustomLog /var/log/<%= apache_name %>/<%= name %>_access.log combined
+	ServerSignature Off
+</VirtualHost>
