@@ -1,0 +1,15 @@
+[submodule "puppet/modules/stdlib"]
+	path = puppet/modules/stdlib
+	url = https://github.com/puppetlabs/puppetlabs-stdlib.git
+[submodule "puppet/modules/percona"]
+	path = puppet/modules/percona
+	url = https://github.com/arioch/puppet-percona.git
+[submodule "puppet/modules/apt"]
+	path = puppet/modules/apt
+	url = https://github.com/puppetlabs/puppetlabs-apt.git
+[submodule "puppet/modules/memcached"]
+	path = puppet/modules/memcached
+	url = https://github.com/thias/puppet-memcached.git
+[submodule "puppet/modules/apache"]
+	path = puppet/modules/apache
+	url = https://github.com/soluvas/puppet-apache.git
