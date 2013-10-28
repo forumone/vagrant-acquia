@@ -14,15 +14,14 @@ sub vcl_recv {
     error 200 "Varnish is Ready";
   }
 
-# nginx status checks
-if (req.url ~ "^/nginx_status") {
-  if ( !client.ip ~ internal) {
-    error 405 "Not allowed.";
-  } else {
-    return (pass);
+  # nginx status checks
+  if (req.url ~ "^/nginx_status") {
+    if ( !client.ip ~ internal) {
+      error 405 "Not allowed.";
+    } else {
+      return (pass);
+    }
   }
-}
-
 
   # Allow PURGE from localhost and 192.168.0.0/24
   if (req.request == "PURGE") {
