@@ -4,7 +4,7 @@ Vagrant.configure("2") do |config|
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box_url = "http://clients.forumone.com/sites/default/files/boxes/lucid-32.box"
+  config.vm.box_url = "https://docs.google.com/a/forumone.com/uc?export=download&confirm=Gm5R&id=0B2EiybKZrZl7UjlKcHVjN2M0MGs"
 
   # Port for Varnish
   config.vm.network :forwarded_port, guest: 80, host: 8080
